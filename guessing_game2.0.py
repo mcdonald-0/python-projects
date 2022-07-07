@@ -9,7 +9,7 @@ def check_answer(user_answer, answer, alternative_answer):
     while still_guessing and attempt < 3:
         if user_answer.lower() == answer or user_answer.lower() == alternative_answer:
             print('Correct')
-            score += 1
+            score = score + 3 - attempt
             still_guessing = False
         else:
             if attempt < 3:
@@ -20,8 +20,10 @@ def check_answer(user_answer, answer, alternative_answer):
         print(f'The correct answer is {answer}')
 
 def check_username(user_answer, answer):
+    global score
     if user_answer == answer:
-        print('Correct')
+        score += 1
+        print('That\'s corect!')
     else:
         print('It\'s a shame you can\'t remember your own username')
 
@@ -41,15 +43,23 @@ question2 = input('A group of ravens is called? ')
 check_answer(question2, 'a conspiracy', 'conspiracy')
 question3 = input('What\'s your name? ')
 check_username(question3, username)
-question4 = input('What is the current time? ')
+question4 = input('What is the current time? \n (PS: Write the time in this format "13:10" or "01:13pm") ')
 check_answer(question4, time.strftime('%H:%M'), time.strftime('%I:%M%p').lower())
+question5 = input('Which one of these is a fish? \n \
+A) Whale\n B) Dolphin\n C) Shark\n D) Squid\n \
+Type A, B, C or D ')
+check_answer(question5, 'c', '3')
+question6 = input('Are bat\'s mammals. True or False? ')
+check_answer(question6, 'true', 'yes')
 
-if score == 3:
-    print(f'Congratulations on finishing the game {username},\n Your score was perfect, {score} of 3')
-elif score == 2:
-    print(f'Congratulations on finishing the game {username},\n Your score was quite good, {score} of 3')
+if score == 18:
+    print(f'Congratulations on finishing the game {username},\n Your score was perfect, {score} of 18')
+elif score > 12:
+    print(f'Congratulations on finishing the game {username},\n Your score was quite good, {score} of 18')
+elif score > 6:
+    print(f'Although your score was not quite good, \n Congratulations on finishing the game {username}, you scored {score} of 18')
 else:
-    print(f'Although your score was not good, \n Congratulations on finishing the game {username}, you scored {score} of 3')
+    print(f'Your score was not good {username}! you scored {score} of 18')
 
 
 "----------------------------- FINAL COMMENTS ------------------------------------"
