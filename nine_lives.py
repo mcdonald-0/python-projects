@@ -12,22 +12,28 @@ guessed_correctly = False
 
 
 print(secret_word)
-
-
-start = 0
-for i in secret_word:
-    clue[start] = i
-    start += 1
-
+    
 print(clue)
 
 def check_guess(secret_word, guess, clue):
-    global lives, guessed_correctly
+    global lives, guessed_correctly, start
 
     guess_length = len(guess)
-    if guess == secret_word:
-        guessed_correctly = True
-        print('Correctly guessed')
+    if len(guess) > 1:
+        if guess == secret_word:
+            guessed_correctly = True
+            print('Correctly guessed')
+        elif guess in secret_word:
+            start = secret_word.index(guess)
+            for i in secret_word[start:(len(guess) + 1)]:
+                clue[start] = i
+                start += 1
+            lives -= guess_length
+        else:
+            lives -= guess_length
+    elif guess in secret_word:
+        clue[secret_word.index(guess)] = guess
+        lives -= guess_length
     else:
         lives -= guess_length
 
