@@ -5,6 +5,7 @@ punctuation = string.punctuation
 adjectives = ['sleepy', 'big', 'small', 'old', 'young', 'preety', 'alert', 'perfect', 'old', 'smart', 'easy', 'hot', 'cute', 'hard', 'busy', 'safe', 'impossible', 'dirty', 'possible']
 nouns = ['car', 'adam', 'cat', 'london', 'shoemaker', 'airpod', 'industry', 'austria', 'vaccum', 'eraser', 'room', 'rat', 'restaurant', 'phone', 'canada', 'seoul', 'refrigirator']
 
+
 password = f'{random.randrange(0, 100)}{random.choice(adjectives)}{random.choice(punctuation)}{random.choice(nouns)}'
 
 print('\
